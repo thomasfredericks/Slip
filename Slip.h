@@ -21,7 +21,7 @@ class Slip {
 public:
 	
 	//the serial port used
-	Slip(Stream * );
+	Slip(Stream* stream=&Serial);
     
     // Checks for the presence of a SLIP packet, and reports the size. parsePacket() must be called before reading the buffer 
 	int parsePacket();
