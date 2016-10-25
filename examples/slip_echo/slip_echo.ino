@@ -1,6 +1,10 @@
+/*
+This is a test sketch for the Slip library. It will simply echo back anything received.
+*/
+
 #include <Slip.h>
 
-Slip slip(&Serial);
+Slip slip; // Same as Slip slip(&Serial);
 
 void setup() {
   Serial.begin(57600); // Initiate serial communication.
@@ -9,16 +13,16 @@ void setup() {
 void loop() {
 
   while ( slip.parsePacket() ) { 
-    //Serial.print("data: ");
+   
     slip.beginPacket();
+    
     while ( slip.available() ) {
-     // Serial.print( slip.read() );
-     // Serial.print(' ');
+ 
      slip.write(slip.read());
+
     }
     slip.endPacket();
-    //Serial.println();
+   
   }
 }
-
 
